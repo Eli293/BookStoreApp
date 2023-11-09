@@ -13,6 +13,7 @@ namespace BookStoreApp.Controllers
 			_logger = logger;
 		}
 
+		//index action
 		public IActionResult Index()
 		{
 			return View();
