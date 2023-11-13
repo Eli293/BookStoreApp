@@ -1,0 +1,62 @@
+﻿@model AuthorViewModel
+@{
+	ViewData["Title"] = "Tuxedo Books";
+}
+@if (TempData.Keys.Contains("message"))
+{
+	<h4 class="bg-success p-2">@TempData["message"]</h4>
+}
+
+<div>
+	<h2>Authors</h2>
+</div>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr class="text-white bg-dark">
+			<th>Author ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Author author in Model.AuthorPageResult)
+		{
+			<tr>
+				<td>@author.AuthorId</td>
+				<td>@author.FirstName</td>
+				<td>@author.LastName</td>
+				<td>
+						<button method="post" asp-action="Edit" asp-controller="Author" type="submit" class="btn btn-primary">
+							Edit
+						</button>
+						<input type="hidden" asp-for="@author.AuthorId" />
+					
+						<button method="post" asp-action="Delete" asp-controller="Author" type="submit" class="btn btn-danger">
+							Delete
+						</button>
+						<input type="hidden" asp-for="@author.AuthorId" />
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<div class="text-center">
+	<pager asp-action="AuthorList" asp-controller="AuthorController" asp-route-page="@Model.AuthorPageResult.PageNumber" asp-route-pageSize="@Model.AuthorPageResult.PageSize" asp-route-totalItemCount="@Model.AuthorPageResult.TotalCount" id="authorPager">
+		<ul class="pagination">
+			<li class="page-item @((Model.AuthorPageResult.PageNumber == 1) ? "disabled" : "")">
+				<a class="page-link" href="@(Url.Page("/AuthorList", new { page = 1, pageSize = Model.AuthorPageResult.PageSize }))">1</a>
+			</li>
+			@for (int i = 2; i <= Model.AuthorPageResult.TotalPages; i++)
+			{
+				<li class="page-item @(Model.AuthorPageResult.PageNumber == i ? "active" : "")">
+					<a class="page-link" href="@(Url.Action("Index", "Author", new { page = i, pageSize = Model.AuthorPageResult.PageSize }))">@i</a>
+				</li>
+			}
+			<li class="page-item @((Model.AuthorPageResult.PageNumber == Model.AuthorPageResult.TotalPages) ? "disabled" : "")">
+				<a class="page-link" href="@(Url.Action("Index", "Author", new { page = Model.AuthorPageResult.PageNumber + 1, pageSize = Model.AuthorPageResult.PageSize }))">Next</a>
+			</li>
+		</ul>
+	</pager>
+</div>
+
