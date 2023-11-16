@@ -4,6 +4,14 @@
 
 @model Book
 <div>
-    <div><h1>@Model.Title</h1></div>
-    <div>@Model.Price</div>
+    <h1>Book Details</h1>
+    <div><h2>@Model.Title</h2></div>
+    <div>ISBN: @Model.ISBN</div>
+    <div>$@Model.Price</div>
+    <div>Author: @Model.authorObject.LastName, @Model.authorObject.FirstName</div>
+    <div>Genre: @Model.Genre.Name</div>
 </div>
+
+<a asp-controller="Book" asp-action="Edit" asp-route-bookId="@Model.BookId" class="btn btn-primary">Edit</a>
+<a asp-controller="Book" asp-action="Delete" asp-route-bookId="@Model.BookId" class="btn btn-primary">Delete</a>
+<a asp-controller="Book" asp-action="Index" class="btn btn-primary">Back</a>

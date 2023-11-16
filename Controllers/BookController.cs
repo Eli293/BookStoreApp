@@ -53,8 +53,51 @@ namespace BookStoreApp.Controllers
 
         public IActionResult BookDetails(int bookId)
         {
-            Book book = context.Books.Where(p => p.BookId == bookId).FirstOrDefault() ?? new Book();
+            Book book = context.Books.Where(b => b.BookId == bookId)
+				.Include(a => a.authorObject)
+				.Include(g => g.Genre)
+				.FirstOrDefault() ?? new Book();
             return View(book);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int bookId)
+        {
+            Book book = context.Books.Where(b => b.BookId == bookId)
+                .Include(a => a.authorObject)
+                .Include(g => g.Genre)
+                .FirstOrDefault() ?? new Book();
+
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Book book)
+        {
+
+            context.Books.Update(book);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Book");
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int bookId)
+        {
+            Book book = context.Books.Where(b => b.BookId == bookId)
+                .Include(a => a.authorObject)
+                .Include(g => g.Genre)
+                .FirstOrDefault() ?? new Book();
+
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(Book book)
+        {
+            context.Books.Remove(book);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Book");
         }
 
     }

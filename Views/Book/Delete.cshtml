@@ -1,0 +1,16 @@
+﻿@model Book
+<h1>Delete Book?</h1>
+<form asp-action="DeleteConfirmed" method="post">
+    <input asp-for="BookId" type="hidden" />
+    <input asp-for="ISBN" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control">
+    </div>
+
+
+    <button type="Submit" class="btn btn-primary"> Confirm Delete </button>
+    <a asp-controller="Book" asp-action="Index" class="btn btn-primary">Cancel</a>
+
+</form>
