@@ -40,7 +40,9 @@
 		@foreach (Book book in Model.PageResult)
 		{
 			<tr>
-				<td>@book.Title</td>
+				<td>
+					<a asp-controller="Book" asp-action="BookDetails" asp-route-id="@book.BookId">@book.Title</a>
+				</td>
 				<td>@book.authorObject.FirstName @book.authorObject.LastName</td>
 				<td>@book.Genre.Name</td>
 				<td>$@book.Price</td>

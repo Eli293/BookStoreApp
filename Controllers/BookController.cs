@@ -50,5 +50,12 @@ namespace BookStoreApp.Controllers
             TempData["message"] = $"{model.Book.Title} has been added in the cart";
             return RedirectToAction("Index", "Book");
         }
-	}
+
+        public IActionResult BookDetails(int bookId)
+        {
+            Book book = context.Books.Where(p => p.BookId == bookId).FirstOrDefault() ?? new Book();
+            return View(book);
+        }
+
+    }
 }
