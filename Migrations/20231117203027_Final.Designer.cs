@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreApp.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20231102234926_Initial")]
-    partial class Initial
+    [Migration("20231117203027_Final")]
+    partial class Final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,123 +64,87 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            AuthorId = 11,
+                            AuthorId = 4,
                             FirstName = "David",
                             LastName = "McCullough"
                         },
                         new
                         {
-                            AuthorId = 12,
-                            FirstName = "George",
-                            LastName = "Orwell"
-                        },
-                        new
-                        {
-                            AuthorId = 13,
-                            FirstName = "J.K.",
-                            LastName = "Rowling"
-                        },
-                        new
-                        {
-                            AuthorId = 14,
+                            AuthorId = 5,
                             FirstName = "J.R.R.",
                             LastName = "Tolkien"
                         },
                         new
                         {
-                            AuthorId = 15,
-                            FirstName = "Augusten",
-                            LastName = "Burroughs"
+                            AuthorId = 6,
+                            FirstName = "Isaac",
+                            LastName = "Asimov"
                         },
                         new
                         {
-                            AuthorId = 16,
+                            AuthorId = 7,
                             FirstName = "Harper",
                             LastName = "Lee"
                         },
                         new
                         {
-                            AuthorId = 17,
-                            FirstName = "Leo",
-                            LastName = "Tolstoy"
+                            AuthorId = 8,
+                            FirstName = "Haword",
+                            LastName = "Zinn"
                         },
                         new
                         {
-                            AuthorId = 18,
-                            FirstName = "Jane",
-                            LastName = "Austen"
+                            AuthorId = 9,
+                            FirstName = "Frank",
+                            LastName = "Herbert"
                         },
                         new
                         {
-                            AuthorId = 19,
+                            AuthorId = 10,
                             FirstName = "F. Scott",
                             LastName = "Fitzgerald"
                         },
                         new
                         {
-                            AuthorId = 20,
-                            FirstName = "Agatha",
-                            LastName = "Christie"
+                            AuthorId = 11,
+                            FirstName = "Jane",
+                            LastName = "Austen"
                         },
                         new
                         {
-                            AuthorId = 21,
-                            FirstName = "Dan",
-                            LastName = "Brown"
+                            AuthorId = 12,
+                            FirstName = "William",
+                            LastName = "Gibson"
                         },
                         new
                         {
-                            AuthorId = 22,
-                            FirstName = "Mark",
-                            LastName = "Twain"
-                        },
-                        new
-                        {
-                            AuthorId = 23,
+                            AuthorId = 13,
                             FirstName = "J.D.",
                             LastName = "Salinger"
                         },
                         new
                         {
-                            AuthorId = 24,
+                            AuthorId = 14,
                             FirstName = "Ernest",
                             LastName = "Hemingway"
                         },
                         new
                         {
-                            AuthorId = 25,
-                            FirstName = "Aldous",
-                            LastName = "Huxley"
+                            AuthorId = 15,
+                            FirstName = "Yuval",
+                            LastName = "Harari"
                         },
                         new
                         {
-                            AuthorId = 26,
-                            FirstName = "Herman",
-                            LastName = "Melville"
+                            AuthorId = 16,
+                            FirstName = "William",
+                            LastName = "Blatty"
                         },
                         new
                         {
-                            AuthorId = 27,
-                            FirstName = "Stephen",
-                            LastName = "King"
-                        },
-                        new
-                        {
-                            AuthorId = 28,
-                            FirstName = "J.R.R.",
-                            LastName = "Tolkien"
-                        },
-                        new
-                        {
-                            AuthorId = 29,
-                            FirstName = "Lewis",
-                            LastName = "Carroll"
-                        },
-                        new
-                        {
-                            AuthorId = 30,
-                            FirstName = "Andy",
-                            LastName = "Weir"
+                            AuthorId = 17,
+                            FirstName = "William",
+                            LastName = "Shakespeare"
                         });
                 });
 
@@ -244,7 +208,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "0-670-81302-8",
+                            ISBN = "978-0-670-81302-5",
                             AuthorId = 1,
                             BookId = 4,
                             GenreId = 4,
@@ -262,7 +226,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0062073563",
+                            ISBN = "978-0-06-207356-3",
                             AuthorId = 2,
                             BookId = 6,
                             GenreId = 5,
@@ -271,7 +235,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0062074027",
+                            ISBN = "978-0-06-207402-7",
                             AuthorId = 2,
                             BookId = 7,
                             GenreId = 5,
@@ -280,7 +244,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0062073501",
+                            ISBN = "978-0-06-207350-1",
                             AuthorId = 2,
                             BookId = 8,
                             GenreId = 5,
@@ -289,7 +253,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0062073488",
+                            ISBN = "978-0-06-207348-8",
                             AuthorId = 2,
                             BookId = 9,
                             GenreId = 5,
@@ -298,7 +262,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0062073587",
+                            ISBN = "978-0-06-207358-7",
                             AuthorId = 2,
                             BookId = 10,
                             GenreId = 5,
@@ -307,16 +271,16 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1459745186",
+                            ISBN = "978-0-440-23762-4",
                             AuthorId = 3,
                             BookId = 11,
-                            GenreId = 3,
+                            GenreId = 1,
                             Price = 12.99,
                             Title = "Safe Harbour"
                         },
                         new
                         {
-                            ISBN = "978-0552142458",
+                            ISBN = "978-0-552-14245-8",
                             AuthorId = 3,
                             BookId = 12,
                             GenreId = 1,
@@ -325,7 +289,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0593339169",
+                            ISBN = "978-0-593-33916-9",
                             AuthorId = 3,
                             BookId = 13,
                             GenreId = 3,
@@ -334,7 +298,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1984821461",
+                            ISBN = "978-1-9848-2146-1",
                             AuthorId = 3,
                             BookId = 14,
                             GenreId = 1,
@@ -343,7 +307,7 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0385334679",
+                            ISBN = "978-0-385-33467-9",
                             AuthorId = 3,
                             BookId = 15,
                             GenreId = 3,
@@ -352,8 +316,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000006",
-                            AuthorId = 14,
+                            ISBN = "978-0-446-31078-9",
+                            AuthorId = 7,
                             BookId = 16,
                             GenreId = 1,
                             Price = 10.99,
@@ -361,8 +325,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000007",
-                            AuthorId = 15,
+                            ISBN = "978-1-77426-642-7",
+                            AuthorId = 17,
                             BookId = 17,
                             GenreId = 3,
                             Price = 16.989999999999998,
@@ -370,8 +334,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000008",
-                            AuthorId = 16,
+                            ISBN = "978-0-307-74365-7",
+                            AuthorId = 1,
                             BookId = 18,
                             GenreId = 4,
                             Price = 35.780000000000001,
@@ -379,8 +343,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000009",
-                            AuthorId = 17,
+                            ISBN = "978-0-06-239734-8",
+                            AuthorId = 8,
                             BookId = 19,
                             GenreId = 6,
                             Price = 24.09,
@@ -388,8 +352,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000010",
-                            AuthorId = 18,
+                            ISBN = "978-0-441-17271-9",
+                            AuthorId = 9,
                             BookId = 20,
                             GenreId = 2,
                             Price = 19.989999999999998,
@@ -397,17 +361,17 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000011",
-                            AuthorId = 19,
-                            BookId = 11,
+                            ISBN = "978-1-4209-5871-3",
+                            AuthorId = 11,
+                            BookId = 21,
                             GenreId = 1,
                             Price = 12.99,
                             Title = "Pride and Prejudice"
                         },
                         new
                         {
-                            ISBN = "00000012",
-                            AuthorId = 15,
+                            ISBN = "979-84-9779-677-3",
+                            AuthorId = 17,
                             BookId = 22,
                             GenreId = 3,
                             Price = 50.890000000000001,
@@ -415,8 +379,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000013",
-                            AuthorId = 20,
+                            ISBN = "978-0-06-209436-0",
+                            AuthorId = 16,
                             BookId = 23,
                             GenreId = 4,
                             Price = 14.99,
@@ -424,8 +388,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "000000014",
-                            AuthorId = 21,
+                            ISBN = "978-0-09-959008-8",
+                            AuthorId = 15,
                             BookId = 24,
                             GenreId = 6,
                             Price = 15.99,
@@ -433,8 +397,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000015",
-                            AuthorId = 22,
+                            ISBN = "978-0-441-00746-2",
+                            AuthorId = 12,
                             BookId = 25,
                             GenreId = 2,
                             Price = 21.25,
@@ -442,8 +406,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000016",
-                            AuthorId = 23,
+                            ISBN = "978-0-7432-7356-5",
+                            AuthorId = 10,
                             BookId = 26,
                             GenreId = 1,
                             Price = 60.990000000000002,
@@ -451,26 +415,26 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000017",
-                            AuthorId = 15,
+                            ISBN = "979-86-510-2746-0",
+                            AuthorId = 17,
                             BookId = 27,
                             GenreId = 3,
-                            Price = 28.0,
+                            Price = 28.989999999999998,
                             Title = "Macbeth"
                         },
                         new
                         {
-                            ISBN = "00000018",
-                            AuthorId = 16,
+                            ISBN = "978-0-7432-2672-1",
+                            AuthorId = 4,
                             BookId = 28,
-                            GenreId = 4,
+                            GenreId = 3,
                             Price = 16.5,
-                            Title = "It"
+                            Title = "1776"
                         },
                         new
                         {
-                            ISBN = "00000019",
-                            AuthorId = 14,
+                            ISBN = "978-1-4767-2875-9",
+                            AuthorId = 4,
                             BookId = 29,
                             GenreId = 6,
                             Price = 32.990000000000002,
@@ -478,8 +442,8 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "00000020",
-                            AuthorId = 15,
+                            ISBN = "978-0-553-29335-7",
+                            AuthorId = 6,
                             BookId = 30,
                             GenreId = 2,
                             Price = 13.99,
@@ -487,39 +451,48 @@ namespace BookStoreApp.Migrations
                         },
                         new
                         {
-                            ISBN = "000092",
-                            AuthorId = 14,
-                            BookId = 32,
+                            ISBN = "978-0-00-847128-6",
+                            AuthorId = 5,
+                            BookId = 31,
                             GenreId = 7,
                             Price = 14.99,
                             Title = "The Lord of the Rings"
                         },
                         new
                         {
-                            ISBN = "000096",
-                            AuthorId = 14,
-                            BookId = 33,
+                            ISBN = "978-0-261-10273-6",
+                            AuthorId = 5,
+                            BookId = 32,
                             GenreId = 7,
                             Price = 17.989999999999998,
                             Title = "The Silmarillion"
                         },
                         new
                         {
-                            ISBN = "00000095",
-                            AuthorId = 19,
-                            BookId = 34,
+                            ISBN = "978-0-09-178183-5",
+                            AuthorId = 10,
+                            BookId = 33,
                             GenreId = 1,
                             Price = 18.989999999999998,
                             Title = "Love in the Night"
                         },
                         new
                         {
-                            ISBN = "00000097",
-                            AuthorId = 23,
-                            BookId = 35,
+                            ISBN = "978-0-316-76948-8",
+                            AuthorId = 13,
+                            BookId = 34,
                             GenreId = 1,
                             Price = 13.67,
                             Title = "The Catcher in the Rye"
+                        },
+                        new
+                        {
+                            ISBN = "978-0-684-80122-3",
+                            AuthorId = 14,
+                            BookId = 35,
+                            GenreId = 1,
+                            Price = 17.989999999999998,
+                            Title = "Old Man and the Sea"
                         });
                 });
 
@@ -568,7 +541,7 @@ namespace BookStoreApp.Migrations
                         new
                         {
                             GenreId = 6,
-                            Name = "history"
+                            Name = "History"
                         },
                         new
                         {
@@ -580,7 +553,7 @@ namespace BookStoreApp.Migrations
             modelBuilder.Entity("BookStoreApp.Models.Book", b =>
                 {
                     b.HasOne("BookStoreApp.Models.Author", "authorObject")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -594,6 +567,11 @@ namespace BookStoreApp.Migrations
                     b.Navigation("Genre");
 
                     b.Navigation("authorObject");
+                });
+
+            modelBuilder.Entity("BookStoreApp.Models.Author", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }
