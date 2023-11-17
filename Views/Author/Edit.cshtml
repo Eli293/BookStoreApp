@@ -1,0 +1,31 @@
+﻿@model Author
+@{
+	ViewData["Title"] = "Tuxedo Books";
+}
+@if (TempData.Keys.Contains("message"))
+{
+	<h4 class="bg-success p-2">@TempData["message"]</h4>
+}
+<div>
+
+	<h1>Edit Author Details</h1>
+<form asp-action="Edit" asp-controller="Author" method="post">
+    <input asp-for="AuthorId" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" value="@Model.FirstName">
+    </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" class="form-control" value="@Model.LastName">
+        </div>
+
+    <button type="Submit" class="btn btn-primary"> Update </button>
+    <a asp-controller="Author" asp-action="Index" class="btn btn-primary">Cancel</a>
+
+</form>
+
+
+</div>

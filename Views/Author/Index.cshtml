@@ -1,5 +1,6 @@
 ﻿@model AuthorViewModel
 @{
+	Layout = "_Layout";
 	ViewData["Title"] = "Tuxedo Books";
 }
 @if (TempData.Keys.Contains("message"))
@@ -7,8 +8,25 @@
 	<h4 class="bg-success p-2">@TempData["message"]</h4>
 }
 
+<div class="m-5">
 <div>
 	<h2>Authors</h2>
+	<form method="get" asp-action="Index" asp-controller="Author">
+		<table style="border=0">
+			<tr>
+				<td>  <label for="searchName">Search by Name:</label>  </td>
+				<td>
+					<div class="m-3" style="width: 200px;">
+
+						@Html.TextBox("searchName", "", new { @class = "form-control" })
+					</div>
+				</td>
+				<td>
+					<button type="submit" class="btn btn-primary">Search</button>
+				</td>
+			</tr>
+		</table>
+	</form>
 </div>
 <table class="table table-bordered table-striped">
 	<thead>
@@ -27,15 +45,22 @@
 				<td>@author.FirstName</td>
 				<td>@author.LastName</td>
 				<td>
-						<button method="post" asp-action="Edit" asp-controller="Author" type="submit" class="btn btn-primary">
-							Edit
+
+						<a method="get" asp-action="Details" asp-controller="Author" asp-route-authorId="@author.AuthorId">
+								<button type="submit" class="btn btn-primary">
+							Details
 						</button>
-						<input type="hidden" asp-for="@author.AuthorId" />
-					
-						<button method="post" asp-action="Delete" asp-controller="Author" type="submit" class="btn btn-danger">
+							<input type="hidden" asp-for="@author.AuthorId" />
+							</a>
+
+
+						<a method="get" asp-action="Delete" asp-controller="Author" asp-route-authorId="@author.AuthorId">
+								<button type="submit" class="btn btn-danger">
 							Delete
 						</button>
 						<input type="hidden" asp-for="@author.AuthorId" />
+							</a>
+							
 				</td>
 			</tr>
 		}
@@ -58,5 +83,6 @@
 			</li>
 		</ul>
 	</pager>
+</div>
 </div>
 

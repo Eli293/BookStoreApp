@@ -1,0 +1,24 @@
+﻿@model Author
+@{
+	ViewData["Title"] = "Tuxedo Books";
+}
+@if (TempData.Keys.Contains("message"))
+{
+		<h4 class="bg-success p-2">@TempData["message"]</h4>
+}
+<h1>Delete Author?</h1>
+<form asp-action="DeleteConfirmed" method="post">
+    <input asp-for="AuthorId" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control">
+    </div>
+
+
+    <button type="Submit" class="btn btn-primary"> Confirm Delete </button>
+    <a asp-controller="Author" asp-action="Index" class="btn btn-primary">Cancel</a>
+
+</form>

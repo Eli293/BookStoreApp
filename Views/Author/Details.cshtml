@@ -1,0 +1,27 @@
+﻿@model Author
+@{
+	ViewData["Title"] = "Tuxedo Books";
+}
+<div class="m-5">
+    <h1>Author Details</h1>
+    <div><h3>@Model.FirstName @Model.LastName</h3></div>
+    <div>Author ID: @Model.AuthorId</div>
+    <div>Books Written:</div>
+    @if (ViewData["AuthorBooks"] != null)
+    {
+        var authorBooks = (List<Book>)ViewData["AuthorBooks"];
+        foreach (var book in authorBooks)
+        {
+            <li>@book.Title</li>
+        }
+    }
+    else
+    {
+        <p>No associated books.</p>
+    }
+    <div class="mt-2">
+<a asp-controller="Author" asp-action="Edit" asp-route-authorId="@Model.AuthorId" class="btn btn-success">Edit</a>
+<a asp-controller="Author" asp-action="Delete" asp-route-authorId="@Model.AuthorId" class="btn btn-danger">Delete</a>
+<a asp-controller="Author" asp-action="Index" class="btn btn-primary">Back</a>
+    </div>
+</div>
