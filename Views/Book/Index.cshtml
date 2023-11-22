@@ -3,11 +3,15 @@
 	Layout = "_Layout";
 	ViewData["Title"] = "Tuxedo Books";
 }
-@if (TempData.Keys.Contains("message"))
+@if (TempData["Message"] != null)
 {
-	<h4 class="bg-success p-2">@TempData["message"]</h4>
+	<div class="alert alert-success" role="alert">
+		@Html.Raw(TempData["Message"].ToString())
+	</div>
 }
 
+
+<div class="m-5">
 <div>
 	<h2>Book Catalog</h2>
 	<form method="get" asp-action="Index" asp-controller="Book">
@@ -15,7 +19,7 @@
 			<tr>
 				<td>  <label for="selectedGenreId">Search by Genre:</label>  </td>
 				<td>
-		<div style="width: 200px;">
+		<div class="m-3" style="width: 200px;">
 			
 			@Html.DropDownList("selectedGenreId", Model.Genres, "All Genres", new { @class = "form-control" })
 		</div>
@@ -48,7 +52,7 @@
 				<td>@book.Genre.Name</td>
 				<td>$@book.Price</td>
 				<td>
-					<form method="post" asp-action="Add" asp-controller="Book">
+					<form method="post" asp-action="Add" asp-controller="Cart">
 						<button type="submit" class="btn btn-primary">
 							Add to cart
 						</button>
@@ -64,18 +68,19 @@
 	<pager asp-action="BookList" asp-controller="BookController" asp-route-page="@Model.PageResult.PageNumber" asp-route-pageSize="@Model.PageResult.PageSize" asp-route-totalItemCount="@Model.PageResult.TotalCount" id="bookPager">
 		<ul class="pagination">
 			<li class="page-item @((Model.PageResult.PageNumber == 1) ? "disabled" : "")">
-				<a class="page-link" href="@(Url.Page("/BookList", new { page = 1, pageSize = Model.PageResult.PageSize }))">1</a>
+				<a class="page-link" href="@(Url.Action("Index", "Book", new { page = 1, pageSize = Model.PageResult.PageSize, selectedGenreId = Model.SelectedGenreId }))">1</a>
 			</li>
 			@for (int i = 2; i <= Model.PageResult.TotalPages; i++)
 			{
 					<li class="page-item @(Model.PageResult.PageNumber == i ? "active" : "")">
-						<a class="page-link" href="@(Url.Action("Index", "Book", new { page = i, pageSize = Model.PageResult.PageSize }))">@i</a>
+						<a class="page-link" href="@(Url.Action("Index", "Book", new { page = i, pageSize = Model.PageResult.PageSize, selectedGenreId = Model.SelectedGenreId }))">@i</a>
 					</li>
 			}
 			<li class="page-item @((Model.PageResult.PageNumber == Model.PageResult.TotalPages) ? "disabled" : "")">
-				<a class="page-link" href="@(Url.Action("Index", "Book", new { page = Model.PageResult.PageNumber + 1, pageSize = Model.PageResult.PageSize }))">Next</a>
+				<a class="page-link" href="@(Url.Action("Index", "Book", new { page = Model.PageResult.PageNumber + 1, pageSize = Model.PageResult.PageSize, selectedGenreId = Model.SelectedGenreId }))">Next</a>
 			</li>
 		</ul>
 	</pager>
+</div>
 </div>
 

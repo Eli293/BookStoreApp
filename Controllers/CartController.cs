@@ -9,32 +9,34 @@ namespace BookStoreApp.Controllers
         private BookstoreContext context { get; set; }
         public CartController(BookstoreContext ctx) => context = ctx;
 
-        [HttpGet]
-        public ViewResult Index()
-        {
-            return View();
-        }
+		[HttpGet]
+		public ViewResult Index()
+		{
+			var session = new BookSession(HttpContext.Session);
+			var cart = session.GetMyBooks();
 
+			var model = new BookListViewModel
+			{
+				Books = cart
+			};
+
+			return View(model);
+		}
 
         [HttpPost]
-        public RedirectToActionResult Add(int id)
+        public IActionResult Add(BookViewModel model)
         {
-            Book book = context.Books
-                .Include(a => a.authorObject)
-                .Include(g => g.Genre)
-                .Where(t => t.BookId == id)
-                .FirstOrDefault() ?? new Book();
-
             var session = new BookSession(HttpContext.Session);
             var cookies = new BookCookies(Response.Cookies);
-            var books = session.GetMyBooks();
 
-            books.Add(book);
+            var books = session.GetMyBooks();
+            books.Add(model.Book);
             session.SetMyBooks(books);
             cookies.SetMyBookIds(books);
 
-            // notify user and redirect to home page
-            TempData["message"] = $"{book.Title} added to your favorites";
+            var cartUrl = Url.Action("Index", "Cart");
+            TempData["Message"] = $"{model.Book.Title} has been added. <a href='{cartUrl}'>View Cart</a>.";
+
             return RedirectToAction("Index", "Book");
         }
 
@@ -42,13 +44,13 @@ namespace BookStoreApp.Controllers
         public RedirectToActionResult Delete()
         {
             var session = new BookSession(HttpContext.Session);
-            var cookies = new BookCookies(Response.Cookies);
+			var cookies = new BookCookies(Response.Cookies);
 
-            session.RemoveMyBooks();
-            cookies.RemoveMyBookIds();
+			session.RemoveMyBooks();
+			cookies.RemoveMyBookIds();
 
-            // notify user and redirect to home page
-            TempData["message"] = "Cart cleared";
+			// notify user and redirect to home page
+			TempData["message"] = "Cart cleared";
             return RedirectToAction("Index", "Book");
         }
     }

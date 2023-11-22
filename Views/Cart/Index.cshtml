@@ -1,0 +1,37 @@
+﻿@model BookListViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Your Cart";
+}
+<h2 class ="text-center mb-4">Your Cart</h2>
+
+@if (Model.Books != null && Model.Books.Any())
+{
+    <div class="row">
+        <div class="col-8 offset-2">
+            <ul class="list-group">
+                @foreach (Book book in Model.Books)
+                {
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @book.Title
+                            </div>
+
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <button type="submit" class="btn btn-primary">
+            Clear Cart
+        </button>
+    </form>
+}
+else
+{
+    <p class="text-center mb-4">Your cart is empty.</p>
+}
