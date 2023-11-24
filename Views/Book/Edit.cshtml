@@ -5,11 +5,17 @@
 <h1>Edit Book Details</h1>
 <form asp-action="Edit" method="post">
     <input asp-for="BookId" type="hidden" />
+    <input asp-for="AuthorId" type="hidden" />
+    <input asp-for="GenreId" type="hidden" />
     <input asp-for="ISBN" type="hidden" />
 
     <div class="mb-3">
         <label asp-for="Title" class="form-label"></label>
         <input asp-for="Title" class="form-control" value="@Model.Title">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" value="@Model.Price">
     </div>
 
     <button type="Submit" class="btn btn-primary"> Update </button>

@@ -3,15 +3,17 @@
 }
 
 @model Book
-<div>
-    <h1>Book Details</h1>
-    <div><h2>@Model.Title</h2></div>
-    <div>ISBN: @Model.ISBN</div>
-    <div>$@Model.Price</div>
-    <div>Author: @Model.authorObject.LastName, @Model.authorObject.FirstName</div>
-    <div>Genre: @Model.Genre.Name</div>
-</div>
+<div class="text-center mb-4">
+    <div>
+        <h1>Book Details</h1>
+        <div><h2>@Model.Title</h2></div>
+        <div>ISBN: @Model.ISBN</div>
+        <div>$@Model.Price</div>
+        <div>Author: @Model.authorObject.LastName, @Model.authorObject.FirstName</div>
+        <div>Genre: @Model.Genre.Name</div>
+    </div>
 
-<a asp-controller="Book" asp-action="Edit" asp-route-bookId="@Model.BookId" class="btn btn-primary">Edit</a>
-<a asp-controller="Book" asp-action="Delete" asp-route-bookId="@Model.BookId" class="btn btn-primary">Delete</a>
-<a asp-controller="Book" asp-action="Index" class="btn btn-primary">Back</a>
+    <a asp-controller="Book" asp-action="Edit" asp-route-bookId="@Model.BookId" class="btn btn-success">Edit</a>
+    <a asp-controller="Book" asp-action="Delete" asp-route-bookId="@Model.BookId" class="btn btn-danger">Delete</a>
+    <a asp-controller="Book" asp-action="Index" class="btn btn-primary">Back</a>
+</div>
