@@ -6,6 +6,7 @@
 {
 	<h4 class="bg-success p-2">@TempData["message"]</h4>
 }
+<div class="m-5">
 <div>
 
 	<h1>Edit Author Details</h1>
@@ -13,19 +14,19 @@
     <input asp-for="AuthorId" type="hidden" />
 
     <div class="mb-3">
-        <label asp-for="FirstName" class="form-label"></label>
+        <label asp-for="FirstName" class="form-label">First Name</label>
         <input asp-for="FirstName" class="form-control" value="@Model.FirstName">
     </div>
 
         <div class="mb-3">
-            <label asp-for="LastName" class="form-label"></label>
+            <label asp-for="LastName" class="form-label">Last Name</label>
             <input asp-for="LastName" class="form-control" value="@Model.LastName">
         </div>
 
-    <button type="Submit" class="btn btn-primary"> Update </button>
+    <button type="Submit" class="btn btn-success"> Update </button>
     <a asp-controller="Author" asp-action="Index" class="btn btn-primary">Cancel</a>
 
 </form>
 
-
+</div>
 </div>
