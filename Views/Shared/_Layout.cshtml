@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,6 +18,11 @@
         color: white;
         text-decoration: none;
     }
+    .d-flex 
+    {
+    display: flex;
+    align-items: center;
+    }
 
       
 </style>
@@ -29,13 +37,45 @@
             <a class="textInNav" asp-controller="Author" asp-action="Index">Author</a>
         </div>
 
-        <div class="d-flex gap-3">
+         <div class="d-flex gap-3">
             <img height="25px" width="25px" src="~/cart.png" style="color:white" />
             <a class="textInNav" asp-controller="Cart" asp-action="Index">Cart</a>
-            <img height="30px" width="35px" src="~/register.png" style="color:white" />
-            <a class="textInNav">Register</a>
-            <img height="25px" width="25px" src="~/setting.png" style="color:white" />
-            <a class="textInNav">Admin</a>
+
+
+           
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                    // signed-in user - Log Out button and username
+                        
+                            <form method="post" asp-action="Logout"
+                                  asp-controller="Account" asp-area="">
+                                <input type="submit" value="Log Out"
+                                       class="btn btn-outline-light" />
+                                <span class="text-light">@User.Identity.Name</span>
+                            </form>
+                        
+                    }
+                    else
+                    {
+                        // get current action
+                        //var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                        // anonymous user - Register link and Log In button
+                        
+                           <a asp-action="Register" asp-controller="Account" asp-area="" class="nav-link textInNav">
+                               <img height="25px" width="25px" src="~/register.png" style="color:white" />Register</a>
+
+                        
+                        
+                            <a asp-action="Login" asp-controller="Account" asp-area="" class="btn btn-outline-light">
+                                Log In
+                            </a>
+                        
+                    }
+                     <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">
+                         <img height="25px" width="25px" src="~/setting.png" style="color:white" />
+                         <span class="textInNav">Admin</span></a>
+
         </div>
     </nav>
 
