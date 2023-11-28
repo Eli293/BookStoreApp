@@ -2,14 +2,14 @@
 @{
     ViewBag.Title = "Login";
 }
- 
+ <div class ="m-5">
 <h2>Login</h2>
  
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post" asp-action="LogIn" 
       asp-route-returnUrl="@Model.ReturnUrl">
     <div class="row mb-2">
-        <label class="col-form-label col-md-2">UserName:</label>
+        <label class="col-form-label col-md-2">Username:</label>
         <div class="col-md-4">
             <input asp-for="Username" class="form-control" />
         </div>
@@ -53,3 +53,4 @@
         </div>
     </div>
 </form>
+</div>
