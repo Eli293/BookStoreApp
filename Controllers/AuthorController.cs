@@ -70,13 +70,12 @@ namespace BookStoreApp.Controllers
 		public IActionResult DeleteConfirmed(Author author)
 		{
 
-			
-				var authorBooks = context.Books.Where(m => m.authorObject.AuthorId == author.AuthorId);
 
-				context.Books.RemoveRange(authorBooks);
+            var authorBooks = context.Books.Where(m => m.authorObject.AuthorId == author.AuthorId).ToList();
+
+
+            context.Books.RemoveRange(authorBooks);
 				context.Authors.Remove(author);
-
-			
 
 			context.SaveChanges();
 			return RedirectToAction("Index", "Author");

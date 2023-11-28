@@ -6,14 +6,15 @@
 {
 		<h4 class="bg-success p-2">@TempData["message"]</h4>
 }
+<div class="m-5">
 <h1>Delete Author?</h1>
 <form asp-action="DeleteConfirmed" method="post">
     <input asp-for="AuthorId" type="hidden" />
 
     <div class="mb-3">
-        <label asp-for="FirstName" class="form-label"></label>
+        <label asp-for="FirstName" class="form-label">First Name</label>
         <input asp-for="FirstName" class="form-control">
-        <label asp-for="LastName" class="form-label"></label>
+        <label asp-for="LastName" class="form-label">Last Name</label>
         <input asp-for="LastName" class="form-control">
     </div>
 
@@ -22,3 +23,4 @@
     <a asp-controller="Author" asp-action="Index" class="btn btn-primary">Cancel</a>
 
 </form>
+</div>
