@@ -8,6 +8,14 @@ namespace BookStoreApp.Models
         [StringLength(255)]
         public string Username { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Please enter a first name.")]
+        [StringLength(255)]
+        public string Firstname { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please enter a last name.")]
+        [StringLength(255)]
+        public string Lastname { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Please enter a password.")]
         [DataType(DataType.Password)]
         [Compare("ConfirmPassword")]

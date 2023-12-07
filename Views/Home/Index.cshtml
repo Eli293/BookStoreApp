@@ -2,6 +2,14 @@
 @{
     ViewData["Title"] = "Tuxedo Books";
 }
+@{
+    if (TempData["SuccessMessagePassword"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessagePassword"]
+        </div>
+    }
+}
 <div>
     <h3 class="text-center">Our Staff Pick!</h3>
     <h4 b-8u658nql35="" class="text-center p-2" style="background-color: #D1FFBD;">

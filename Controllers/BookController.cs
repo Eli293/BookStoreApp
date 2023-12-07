@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreApp.Controllers
 {
@@ -53,7 +54,7 @@ namespace BookStoreApp.Controllers
 				.FirstOrDefault() ?? new Book();
             return View(book);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(int bookId)
         {
@@ -64,7 +65,7 @@ namespace BookStoreApp.Controllers
 
             return View(book);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Edit(Book book)
         {
@@ -74,7 +75,7 @@ namespace BookStoreApp.Controllers
             return RedirectToAction("Index", "Book");
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int bookId)
         {
@@ -85,13 +86,18 @@ namespace BookStoreApp.Controllers
 
             return View(book);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteConfirmed(Book book)
         {
             context.Books.Remove(book);
             context.SaveChanges();
             return RedirectToAction("Index", "Book");
+        }
+
+        public ViewResult AccessDenied()
+        {
+            return View();
         }
 
     }

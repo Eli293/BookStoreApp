@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static System.Reflection.Metadata.BlobBuilder;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreApp.Controllers
 {
@@ -39,7 +40,7 @@ namespace BookStoreApp.Controllers
 			};
 			return View(viewModel);
         }
-
+		[Authorize(Roles = "Admin")]
 		[HttpGet]
 		public IActionResult Edit(int authorId)
 		{
@@ -47,7 +48,7 @@ namespace BookStoreApp.Controllers
 
 			return View(author);
 		}
-
+		[Authorize(Roles = "Admin")]
 		[HttpPost]
 		public IActionResult Edit(Author author)
 		{
@@ -57,7 +58,7 @@ namespace BookStoreApp.Controllers
 			return RedirectToAction("Index", "Author");
 
 		}
-
+		[Authorize(Roles = "Admin")]
 		[HttpGet]
 		public IActionResult Delete(int authorId)
 		{
@@ -65,7 +66,7 @@ namespace BookStoreApp.Controllers
 
 			return View(author);
 		}
-
+		[Authorize(Roles = "Admin")]
 		[HttpPost]
 		public IActionResult DeleteConfirmed(Author author)
 		{
@@ -93,7 +94,10 @@ namespace BookStoreApp.Controllers
       
             return View(author);
 		}
+		public ViewResult AccessDenied()
+		{
+			return View();
+		}
 
-       
-    }
+	}
 }

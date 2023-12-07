@@ -66,9 +66,9 @@ namespace BookStoreApp.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user,
-                        isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //  await signInManager.SignInAsync(user, isPersistent: false);
+                    TempData["SuccessMessage"] = "Registered Successfully!";
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -88,6 +88,10 @@ namespace BookStoreApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ViewResult AccessDenied()
+        {
+            return View();
+        }
 
 
     }
