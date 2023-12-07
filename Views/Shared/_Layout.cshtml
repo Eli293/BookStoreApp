@@ -61,17 +61,14 @@
                                 <span class="text-light">@User.Identity.Name</span>
                             </form>
                         
-                             /*  
+                           
 
                             @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                             {
                                 <img height="30px" width="30px" src="~/user.png" class="icon"/>
                                 <a class="textInNav" asp-controller="User" asp-action="Index">User</a>
                             }
-                       */
-
-                         <img height="30px" width="30px" src="~/user.png" class="icon"/>
-                                <a class="textInNav" asp-controller="User" asp-action="Index">User</a>
+             
                     }
                     else
                     {

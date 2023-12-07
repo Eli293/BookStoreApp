@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreApp.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20231128014202_AddIdentityTables")]
-    partial class AddIdentityTables
+    [Migration("20231207023059_AddIdentyTables")]
+    partial class AddIdentyTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -569,6 +569,14 @@ namespace BookStoreApp.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
